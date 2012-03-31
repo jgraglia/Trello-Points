@@ -21,9 +21,9 @@ So I start to develop some missing unit tests (using QUnit as I want to compare 
 Goals
 =====
 Quite same goals as Trello Scrum : 
-*Add points to cards.
-*List display total of visible cards
-*Trello Points adds functionality to the awesome trello.com for use in Scrum projects.
+* Add points to cards.
+* List display total of visible cards
+* Trello Points adds functionality to the awesome trello.com for use in Scrum projects.
 
 Setup
 -----
