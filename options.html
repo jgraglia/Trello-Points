@@ -1,31 +1,61 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
-<script src="jquery-1.7.1.min.js"></script>
-<script src="options.js"></script>
+	<script src="jquery-1.7.1.min.js"></script>
+	<script src="options.js"></script>
+
+	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
 </head>
 <body>
-	<h1>Lists</h1>
-	<ul>
-		<li><input id="percent" type="checkbox">display percentage when
-			filtered</input></li>
-		<li><input id="filter_and_global" type="checkbox">display filtered and global
-			points</input></li>
-	</ul>
-	<h1>Cards</h1>
-	Points:
-	<ul>
-		<li><input name="pointsSequence" value="defaults" type="radio">defaults</input>: 0, 1, 2, 3, 5, 8, 13, 20</li>
-		<li><input name="pointsSequence" value="fibonacci" type="radio">Fibonacci</input>: 1, 2, 3, 5, 8, 13, 21, 34, 55</li>
-		 <li><input name="pointsSequence" value="custom" type="radio">Custom</input>:<input id="customPointSequence" type="text" value="0, 1, 2, 3, 5, 8, 15, 20, 50"></input></li>
-	</ul>
-	<br>
-	
-	<button id="saveButton">Save</button>
-	<button id="restoreButton">Restore defaults settings</button>
-	<span id="status"></span>
-	<hr/>
-	Inspired by <a href="https://github.com/Q42/TrelloScrum">https://github.com/Q42/TrelloScrum</a>
-</body>
+	<div class="container-fluid">
+    	<div class="row-fluid">
+        	<div class="span12">
+				<h1>Trello Points settings</h1>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span1"></div>
+			<div class="span5">
+				<h2>Lists</h2>
+				<ul>
+					<li><input id="percent" type="checkbox">display percentage when
+						filtered</input></li>
+					<li><input id="filter_and_global" type="checkbox">display filtered and global
+						points</input></li>
+				</ul>
+			</div>
+			<div class="span5">
+				<h2>Cards</h2>
+				Points:
+				<ul>
+					<li><input name="pointsSequence" value="defaults" type="radio">defaults</input>: 0, 1, 2, 3, 5, 8, 13, 20</li>
+					<li><input name="pointsSequence" value="fibonacci" type="radio">Fibonacci</input>: 1, 2, 3, 5, 8, 13, 21, 34, 55</li>
+					 <li><input name="pointsSequence" value="custom" type="radio">Custom</input>:<input id="customPointSequence" type="text" value="0, 1, 2, 3, 5, 8, 15, 20, 50"></input></li>
+				</ul>
+			</div>
+			<div class="span1"></div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<br>
+				<div style="align:center">
+				<button id="saveButton" class="btn">Save</button>
+				<button id="restoreButton" class="btn">Restore defaults settings</button>
+				<i class="icon-ok"></i>
+				<span id="status"></span>
+				</div>
+			</div>
+		</div>		
+		<div class="row-fluid">
+			<div class="span12">
+				<hr/>
+				<a href="https://github.com/jgraglia/Trello-Points">https://github.com/jgraglia/Trello-Points</a> - <a href="https://twitter.com/#!/jgraglia">@jgraglia</a>
+				<br>
+				<span style="font-style: italic;">Inspired by <a href="https://github.com/Q42/TrelloScrum">https://github.com/Q42/TrelloScrum</a></span>
+			</div>
+		</div>
+	</div>				
+	</div>
+	</body>
 </html>
