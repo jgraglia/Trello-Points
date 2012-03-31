@@ -1,28 +1,57 @@
 <html>
-	<head>
-		<title>Trello Points Help</title>
-	</head>
-	<body>
-		<h2>Trello Poins Chrome Extension Help</h2>
-		<p>
-			Trello Points is a Chrome Extension that adds a little bit of functionality
-			to Trello.com to make it perfect to use in SCRUM based projects. Trello Scrum
-			allows you to add story points to cards and accumulates the story points per list.
-		</p>
-		<h3>Adding points to a card</h3>
-		<p>
-			Points are written in between parentheses in the title of a card.
-			<code>(5) upon an error I want to see an awesome 404 page.</code>
-			Upon saving the card, Trello Scrum picks up the assigned points and shows them
-			as a badge in the lower left corner of the card.
-		</p>
-		<p>
-			When you flip a card to add more information to that card, you are also presented with a story point picker upon editing the title. This allows for easier entry. The points shown are shown in the commonly used semi-fibonacci sequence: 0, 1, 2, 3, 5, 8, 13, 20.
-		</p>
-		<p>Allowed entries for story points are all numbers, decimals (like .5 or 4.2) and the question mark (?) for unknowns.
-		</p>
+<head>
+<title>Trello Points Chrome Extension Help</title>
+</head>
+<body>
+	<h2>Trello Points Chrome Extension Help</h2>
+	<p>Trello Points is a Chrome Extension that adds a notion of points
+		to the card of a Trello board. Each lists display the total points of
+		his cards. In the continuity of Trello.com, you are free to add any
+		meanings to the points of card. It can be:
+	<ul>
+		<li>the story points in a scrum board</li>
+		<li>days to complete the task in a todo list board</li>
+		<li>...</li>
+	</ul>
+	As Trello's board are used for many unuspected things, Trello Points
+	can help you to add another criteria to the card (label, members, votes
+	due date, check list are already provided by Trello).
+	</p>
+	<h3>Adding points to a card</h3>
+	<p>
+		Points are written in between parentheses at the end of the title of a
+		card.
+		<code>upon an error I want to see an awesome 404 page. (5)</code>
+		Upon saving the card, Trello Points picks up the assigned points and
+		shows them as a badge in the lower left corner of the card.
+	</p>
+	<p>When you flip a card to add more information to that card, you
+		are also presented with a point picker upon editing the title. This
+		allows for easier entry. You can configure wich sequence to use in the
+		point picker in the options of the extension. The commonly used
+		semi-fibonacci sequence: 0, 1, 2, 3, 5, 8, 13, 20 is used per default.
+	</p>
+	<p>Allowed entries for points are all numbers, decimals (like .5 or
+		4.2) and the question mark (?) for unknowns. Negative points are not
+		(yet) supported...</p>
+	<h3>Filtering cards</h3>
+	<p>When you activate some filters (labels, authors...) the total score of each list
+	is updated to take into account only visible cards.
 	
-		<h3>Credits</h3>
-		<p>TrelloScrum! <a href="https://github.com/Q42/TrelloScrum">https://github.com/Q42/TrelloScrum</a></p>
-	</body>
+	You also have the options to display others scores : total filtered vs. total, percentage..
+	just go to the <b>options</b> of the extension.
+
+	<h3>Credits</h3>
+	<ul>
+		<li>Julien Graglia (<a href="https://twitter.com/jgraglia">@jgraglia</a>)</li>
+		<li>Trello Scrum team:  <a href="https://github.com/Q42/TrelloScrum">https://github.com/Q42/TrelloScrum</a>
+			<ul>
+				<li><a href="http://webglmarcel.q42.net/">Marcel Duin</a></li>
+				<li><a href="https://twitter.com/jkaizer">Jasper Kaizer</a></li>
+				<li>@nicpottier and @paullofte</li>
+				<li>and all contributors to Trello Scrum extension...</li>
+			</ul>
+		</li>
+	</ul>
+</body>
 </html>
