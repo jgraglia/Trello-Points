@@ -16,7 +16,7 @@ Furthermore, display of points were ... quite erratics. (https://github.com/Q42/
 
 So I start to develop some missing unit tests (using QUnit as I want to compare it to Jasmine but that's another story)
 ... and to add an option pane with some settings (in order to test Google Extension)
-... Few hours laters, it was (IMHO) a completely different project.
+... Few hours laters, it was (IMHO) a different project.
 
 Goals
 =====
