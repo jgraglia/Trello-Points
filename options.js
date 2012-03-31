@@ -1,11 +1,11 @@
 // Saves options to localStorage.
 function save_options() {
 	console.log("save_options: ");
-	var percent = $("#percent");
+	var percent = document.getElementById("percent");
 	localStorage["percent"] = percent.checked;
 	console.log("localStorage['percent']: " + localStorage["percent"]);
 
-	var filter_and_global = $("#filter_and_global");
+	var filter_and_global = document.getElementById("filter_and_global");
 	localStorage["filter_and_global"] = filter_and_global.checked;
 	console.log("localStorage['filter_and_global']: "
 			+ localStorage["filter_and_global"]);
