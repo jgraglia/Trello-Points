@@ -92,6 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	restore_options();
 	$("#saveButton").on("click", save_options);
 	$("#restoreButton").on("click", restoreDefaults);
+	
+	$('.ttip').tooltip({delay: { show: 500, hide: 100 }});
 });
 
 function isNumber(text) {

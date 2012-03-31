@@ -6,7 +6,7 @@
 
 	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 	<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-
+	<script src="bootstrap/bootstrap-tooltip.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -20,14 +20,14 @@
 				<h2>Lists</h2>
 				<ul>
 					<li><input id="percent" type="checkbox">display percentage when
-						filtered</input></li>
+						filtered</input><a href="#" class="ttip" rel="tooltip" data-original-title="When checked and when a list is filtered, display the percentage of points of visibles cards vs. all cards of a list"><i class="icon-question-sign"></i></a></li>
 					<li><input id="filter_and_global" type="checkbox">display filtered and global
-						points</input></li>
+						points</input><a href="#" class="ttip" rel="tooltip" data-original-title="When checked and when a list is filtered, display the score of all visibles cards and the total score of a list"><i class="icon-question-sign"></i></a></li>
 				</ul>
 			</div>
 			<div class="span4">
 				<h2>Cards</h2>
-				Points:
+				Points picker values:
 				<ul>
 					<li><input name="pointsSequence" value="defaults" type="radio">defaults</input>: 0, 1, 2, 3, 5, 8, 13, 20</li>
 					<li><input name="pointsSequence" value="fibonacci" type="radio">Fibonacci</input>: 1, 2, 3, 5, 8, 13, 21, 34, 55</li>
@@ -37,10 +37,10 @@
 			<div class="span4">
 				<h2>System</h2>
 					<div class="input-append">
-						<i class="icon-refresh"></i>
+						<i class="icon-repeat"></i>
 						Refresh rate:
                 		<input id="refreshRate" class="input-mini" size="3" type="text" value="2">
-                		<span class="add-on"> second(s)</span>
+                		<span class="add-on"> second(s)</span> <a href="#" class="ttip" rel="tooltip" data-original-title="Cycle of the refresh process of the points of Cards & Lists"><i class="icon-question-sign"></i></a>
                 	</div>
               </div>
 			</div>
