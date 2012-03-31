@@ -50,7 +50,10 @@ Tests
 -------
 Wrote using QUnit (http://docs.jquery.com/QUnit).
 
-See tests/alltests.html
+See tests/alltests.html  [here](tests/alltests.html)
+
+and there is a Trello dedicated to live test : https://trello.com/board/trello-scrum-test/4f7581c3e8ddc47f1c4e7c95
+
 
 License
 -------
@@ -63,3 +66,4 @@ As I say above, Trello Points is a "fork" of TrelloScrum!!
 https://github.com/Q42/TrelloScrum
 
 Julien Graglia (@jgraglia)
+https://github.com/jgraglia/Trello-Points
