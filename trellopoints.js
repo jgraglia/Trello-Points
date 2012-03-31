@@ -27,6 +27,11 @@ var filter = new Filter(debug.filter);
 
 var modes=new Object();
 $(function(){
+	chrome.extension.sendRequest({method: "trelloScrumInstalled"}, function(response) {
+		if (response.data=="true"|| response.data==true) {
+			console.log("Trello Scrum extension seems to be installed (but is it active?)");
+		}
+	});
 	(function periodical() {
 		$('.list-card').each(updateCard);
 		$('.list').each(updateList);
