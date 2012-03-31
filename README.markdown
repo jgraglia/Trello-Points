@@ -50,7 +50,7 @@ Tests
 -------
 Wrote using QUnit (http://docs.jquery.com/QUnit).
 
-See tests/alltests.html  [here](tests/alltests.html)
+See [tests/alltests.html](Trello-Points/blob/master/tests/alltests.html)
 
 and there is a Trello dedicated to live test : https://trello.com/board/trello-scrum-test/4f7581c3e8ddc47f1c4e7c95
 
