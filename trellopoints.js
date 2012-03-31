@@ -43,8 +43,12 @@ $(function(){
 				_pointSeq= modes.pointsSequenceValues.split(',');
 			}
 		});
-		
-		setTimeout(periodical,2000);
+		chrome.extension.sendRequest({method: "getLocalStorage", key: "refreshRate"}, function(response) {
+			modes.refreshRate=Number(response.data);
+		});
+		nextRefreshIn = modes.refreshRate;
+		if(!utils.isNumber(nextRefreshIn) || Number(nextRefreshIn)<1) nextRefreshIn=2;
+		setTimeout(periodical,nextRefreshIn*1000);
 	})();
 });
 

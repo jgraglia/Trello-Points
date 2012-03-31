@@ -4,6 +4,7 @@ $(function(){
 });
 
 //default story point picker sequence
+// see options.html to change this
 var _pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
 
 function showPointPicker() {
@@ -14,7 +15,10 @@ function showPointPicker() {
 
 	var pickers = '<span class="point-value">?</span> ';
 	for (var i=0; i < _pointSeq.length; i++) {
-		pickers += '<span class="point-value">' + _pointSeq[i] + '</span> ';
+		var val = $.trim(_pointSeq[i]);
+		if(utils.isNumber(val)) {
+			pickers += '<span class="point-value">' + val + '</span> ';
+		}
 	}
 	var picker = "<div class='picker'>" + pickers + "</div>";
 	$(".card-detail-title .edit-controls").append(picker);
@@ -31,7 +35,7 @@ function updatePoint(){
 	var text = $text.val();
 
 	// replace our new
-	$text[0].value=parser.parsePoints(text)?text.replace(reg, '('+value+') '):'('+value+') ' + text;
+	$text[0].value=parser.parsePoints(text)?text.replace(reg, '('+value+') '):text+' ('+value+')';
 
 	// then click our button so it all gets saved away
 	$(".card-detail-title .edit .js-save-edit").click();
