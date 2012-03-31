@@ -8,7 +8,7 @@
     	"default_icon": "images/icon.png"
   	},
   	"options_page": "options.html",
-  	"permissions": [ "contentSettings", "tabs", "background" ],
+  	"permissions": [ "background" ],
     "background_page": "background.html",
 	"content_scripts": [
 		{
