@@ -1,0 +1,58 @@
+Trello Points
+===========
+
+First of all, Trello Points was inspired by TrelloScrum extension originally developped by 
+[Marcel Duin](http://webglmarcel.q42.net/) and [Jasper Kaizer](https://twitter.com/jkaizer).
+
+Why have forked ?
+===========
+The main idea was to solve a bug with filtering cards. Total points of the list were not 
+refreshed.
+Furthermore, display of points were ... quite erratics. (https://github.com/Q42/TrelloScrum/issues/11)
+
+So I start to develop some missing unit tests (using QUnit as I want to compare it to Jasmine by thats another story)
+... and to add an option pane with some settings
+... Few hours laters, it was a completly different project.
+
+Goals
+=====
+Add points to cards.
+
+List display total of visible cards
+
+Trello Points adds functionality to the awesome trello.com for use in Scrum projects.
+
+
+Setup
+-----
+
+TrelloPoints is a Chrome extension and you can install it via the Chrome Webstore.
+
+Don't miss the options pane of the extension were you can configure the behavior of the extension.
+
+Or, clone this repository and load the TrelloPoints folder as an unpacked extension.
+
+How does it work?
+-----------------
+In the card titles you can add the points between parentheses. The assigned points
+will be picked up by TrelloPoints and displayed in the upper right corner of the card.
+
+For each list the total amount of points will be calculated and shown in the title
+of the list.
+
+Points modifications will be detected and calculated. So changing a number or moving
+a card will be reflected almost immediately.
+
+License
+-------
+Apache License 2.0
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+Credits
+-------
+As I say above, Trello Points is a fork of TrelloScrum.
+
+Julien Graglia (@jgraglia)
+
+
+

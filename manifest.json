@@ -1,0 +1,20 @@
+{
+	"manifest_version": 2,
+	"name": "Trello Points",
+	"version": "0.1",
+	"description": "Adds points to your Trello",
+	"browser_action": {
+		"default_title": "Trello Points",
+    	"default_icon": "images/icon.png"
+  	},
+  	"options_page": "options.html",
+  	"permissions": [ "contentSettings", "tabs", "background","notifications" ],
+    "background_page": "background.html",
+	"content_scripts": [
+		{
+			"matches": ["https://trello.com/*"],
+			"js": ["jquery-1.7.1.min.js","utils.js", "parser.js", "filter.js","pointpicker.js", "card.js", "list.js", "trellopoints.js"],
+			"css": ["trellopoints.css"]
+		}
+	]
+}

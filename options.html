@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="jquery-1.7.1.min.js"></script>
+<script src="options.js"></script>
+
+</head>
+<body>
+	<h1>Lists</h1>
+	<ul>
+		<li><input id="percent" type="checkbox">display percentage when
+			filtered</input></li>
+		<li><input id="filter_and_global" type="checkbox">display filtered and global
+			points</input></li>
+	</ul>
+	<h1>Cards</h1>
+	Points:
+	<ul>
+		<li><input name="pointsSequence" value="defaults" type="radio">defaults</input>: 0, 1, 2, 3, 5, 8, 13, 20</li>
+		<li><input name="pointsSequence" value="fibonacci" type="radio">Fibonacci</input>: 1, 2, 3, 5, 8, 13, 21, 34, 55</li>
+		 <li><input name="pointsSequence" value="custom" type="radio">Custom</input>:<input id="customPointSequence" type="text" value="0, 1, 2, 3, 5, 8, 15, 20, 50"></input></li>
+	</ul>
+	<br>
+	
+	<button id="saveButton">Save</button>
+	<button id="restoreButton">Restore defaults settings</button>
+	<span id="status"></span>
+	<hr/>
+	Inspired by <a href="https://github.com/Q42/TrelloScrum">https://github.com/Q42/TrelloScrum</a>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css"
+	type="text/css" media="screen" />
+<script type="text/javascript"
+	src="http://code.jquery.com/qunit/git/qunit.js"></script>
+	
+	<script type="text/javascript">
+		// mock chrome extension context...
+		chrome = new Object();
+		chrome.extension = new Object();
+		chrome.extension.getURL = function () {return null;}
+		chrome.extension.sendRequest = function () {return null;}
+	</script>
+	
+	<script type="text/javascript"	src="../utils.js"></script>
+	<script type="text/javascript"	src="../parser.js"></script>
+	<script type="text/javascript"	src="../filter.js"></script>
+	<script type="text/javascript"	src="../card.js"></script>
+	<script type="text/javascript"	src="../list.js"></script>
+	<script type="text/javascript"	src="../trellopoints.js"></script>
+
+	<script type="text/javascript"	src="testutils.js"></script>
+	<script type="text/javascript"	src="parser-test.js"></script>
+	<script type="text/javascript"	src="filter-test.js"></script>
+	<script type="text/javascript"	src="card-test.js"></script>	
+	<script type="text/javascript"	src="list-test.js"></script>	
+
+<script>
+	$(document).ready(function() {
+	});
+</script>
+
+</head>
+<body>
+	<h1 id="qunit-header">QUnit example</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>
