@@ -46,18 +46,18 @@ function restore_options() {
 
 	var percent = localStorage["percent"];
 	console.log("percent: " + percent);
-	if (percent == "true") {
-		$("#percent").checked = "checked";
+	if (percent == "true"|| percent == true) {
+		document.getElementById("percent").checked = "checkeSd";
 	} else {
-		$("#percent").checked = "";
+		document.getElementById("percent").checked = "";
 	}
 	var filter_and_global = localStorage["filter_and_global"];
 	console.log("filter_and_global: " + filter_and_global);
 
-	if (filter_and_global == "true") {
-		$("#filter_and_global").checked = "checked";
+	if (filter_and_global == "true"|| filter_and_global == true) {
+		document.getElementById("filter_and_global").checked = "checked";
 	} else {
-		$("#filter_and_global").checked = "";
+		document.getElementById("filter_and_global").checked = "";
 	}
 	
 	var pointsSequence = localStorage["pointsSequence"];
@@ -78,11 +78,11 @@ function restore_options() {
 	console.log("restored");
 }
 function restoreDefaults() {
-	localStorage.removeItem("percent");
-	localStorage.removeItem("filter_and_global");
-	localStorage.removeItem("pointsSequence");
+	localStorage["percent"]=true;
+	localStorage["filter_and_global"]=true;
+	localStorage["pointsSequence"]="defaults";
 	localStorage.removeItem("pointsSequence-values");
-	localStorage.removeItem("refreshRate");
+	localStorage["refreshRate"]=2;
 	
 	showStatus("Default settings restored.");
 	restore_options();

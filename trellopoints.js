@@ -37,10 +37,10 @@ $(function(){
 		$('.list').each(updateList);
 		
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "percent"}, function(response) {
-			modes.percent=response.data=="true";
+			modes.percent=!(response.data=="false");
 		});
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "filter_and_global"}, function(response) {
-			modes.filter_and_global=response.data=="true";
+			modes.filter_and_global=!(response.data=="false");
 		});
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
 			modes.pointsSequenceValues=response.data;
