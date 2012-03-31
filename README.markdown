@@ -46,6 +46,11 @@ of the list.
 Points modifications will be detected and calculated. So changing a number or moving
 a card will be reflected almost immediately.
 
+Tests
+-------
+Wrote using QUnit http://docs.jquery.com/QUnit
+See tests/alltests.html
+
 License
 -------
 Apache License 2.0
