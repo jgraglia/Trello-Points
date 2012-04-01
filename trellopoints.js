@@ -46,7 +46,10 @@ $(function(){
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
 			modes.pointsSequenceValues=response.data;
 			if (modes.pointsSequenceValues) {
-				_pointSeq= modes.pointsSequenceValues.split(',');
+				var numberArray = picker.parsePointPickerFrom(modes.pointsSequenceValues);
+				if (numberArray.length > 0) {
+					picker.pointSeq= numberArray;
+				}
 			}
 		});
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "refreshRate"}, function(response) {

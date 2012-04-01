@@ -3,9 +3,10 @@ $(function(){
 	$(".card-detail-title .edit-controls").live('DOMNodeInserted',showPointPicker);
 });
 
+var picker=new Object();
 //default story point picker sequence
 // see options.html to change this
-var _pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
+picker.pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
 
 function showPointPicker() {
 	// check if already installed
@@ -14,11 +15,8 @@ function showPointPicker() {
 	}
 
 	var pickers = '<span class="point-value">?</span> ';
-	for (var i=0; i < _pointSeq.length; i++) {
-		var val = $.trim(_pointSeq[i]);
-		if(utils.isNumber(val)) {
-			pickers += '<span class="point-value">' + val + '</span> ';
-		}
+	for (var i=0; i < pointSeq.length; i++) {
+		pickers += '<span class="point-value">' + pointSeq[i] + '</span> ';
 	}
 	var picker = "<div class='picker'>" + pickers + "</div>";
 	$(".card-detail-title .edit-controls").append(picker);
@@ -42,3 +40,15 @@ function updatePoint(){
 
 	return false;
 };
+
+picker.parsePointPickerFrom=function(text) {
+	stringArray= text.split(',');
+	pointsArray = [];
+	for (var i=0; i < stringArray.length; i++) {
+		var val = $.trim(stringArray[i]);
+		if(utils.isNumber(val)) {
+			pointsArray.push(Number(val));
+		}
+	}
+	return pointsArray;
+}
