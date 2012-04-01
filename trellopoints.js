@@ -46,9 +46,9 @@ $(function(){
 		chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
 			modes.pointsSequenceValues=response.data;
 			if (modes.pointsSequenceValues) {
-				var numberArray = picker.parsePointPickerFrom(modes.pointsSequenceValues);
+				var numberArray = parsePointPickerFrom(modes.pointsSequenceValues);
 				if (numberArray.length > 0) {
-					picker.pointSeq= numberArray;
+					pointSeq= numberArray;
 				}
 			}
 		});

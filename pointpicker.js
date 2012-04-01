@@ -3,10 +3,9 @@ $(function(){
 	$(".card-detail-title .edit-controls").live('DOMNodeInserted',showPointPicker);
 });
 
-var picker=new Object();
 //default story point picker sequence
 // see options.html to change this
-picker.pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
+pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
 
 function showPointPicker() {
 	// check if already installed
@@ -41,7 +40,7 @@ function updatePoint(){
 	return false;
 };
 
-picker.parsePointPickerFrom=function(text) {
+function parsePointPickerFrom(text) {
 	stringArray= text.split(',');
 	pointsArray = [];
 	for (var i=0; i < stringArray.length; i++) {
