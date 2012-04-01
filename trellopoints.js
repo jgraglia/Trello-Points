@@ -5,7 +5,7 @@
 ** You can install the extension at:
 **         https://chrome.google.com/webstore/detail/mkcpchladphoadhaclmnlphhijboljjk/details
 ** 
-** Rework from Trello Scrum v.0.52 extension : 
+** Rework from Trello Scrum v.0.53 extension : 
 **    Idea & Documentation:
 **      Jasper Kaizer <https://github.com/jkaizer>
 **    Orig:
