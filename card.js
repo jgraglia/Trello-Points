@@ -52,7 +52,7 @@ function Card($cardElement, debug) {
 			if (debug) log("previous badge found");
 			return lookupExistingBadge();
 		} else {
-			$badge = $('<span class="badge badge-points point-count" style="background-image: url('+iconUrl+') !important;">');
+			$badge = $('<span class="badge badge-points point-count" style="background-image: url('+iconUrl+')">');
 			if ($card.parent()[0]){
 				if (debug) log("appending Trello Scrum badge");
 				$badges = $card.find('.badges');
