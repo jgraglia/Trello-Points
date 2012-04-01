@@ -1,19 +1,20 @@
 /*
-** TrelloScrum v0.52 - https://github.com/Q42/TrelloScrum
-** Adds Scrum to your Trello
+** Trello Points v? - https://github.com/jgraglia/Trello-Points
+** Enhance Trello's cards with freely configurable points
 **
-** Idea & Documentation:
-** Jasper Kaizer <https://github.com/jkaizer>
-**
-** Orig:
-** Marcel Duin <https://github.com/marcelduin>
-**
+** You can install the extension at:
+**         https://chrome.google.com/webstore/detail/mkcpchladphoadhaclmnlphhijboljjk/details
+** 
+** Rework from Trello Scrum v.0.52 extension : 
+**    Idea & Documentation:
+**      Jasper Kaizer <https://github.com/jkaizer>
+**    Orig:
+**      Marcel Duin <https://github.com/marcelduin>
 ** Contribs:
-** Paul Lofte <https://github.com/paullofte>
-** Nic Pottier <https://github.com/nicpottier>
-** Bastiaan Terhorst <https://github.com/bastiaanterhorst>
-** Morgan Craft <https://github.com/mgan59>
-**
+**      Paul Lofte <https://github.com/paullofte>
+**      Nic Pottier <https://github.com/nicpottier>
+**      Bastiaan Terhorst <https://github.com/bastiaanterhorst>
+**      Morgan Craft <https://github.com/mgan59>
 */
 
 var iconUrl = chrome.extension.getURL('images/storypoints-icon.png');
