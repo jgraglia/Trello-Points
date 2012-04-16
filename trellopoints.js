@@ -29,32 +29,64 @@ var filter = new Filter(debug.filter);
 var modes=new Object();
 $(function(){
 	chrome.extension.sendRequest({method: "trelloScrumInstalled"}, function(response) {
-		if (response.data=="true"|| response.data==true) {
+		try{
+			if (response.data=="true"|| response.data==true) {
 			console.log("Trello Scrum extension seems to be installed (but is it active?)");
+			}
+		} catch (err) {
+			utils.log(response);
+			utils.log(err);
+			utils.alertBrokenAPI("Unable to check if Trello Scrum extension is installed (0x0)");
 		}
 	});
 	(function periodical() {
 		$('.list-card').each(updateCard);
 		$('.list').each(updateList);
 		
-		chrome.extension.sendRequest({method: "getLocalStorage", key: "percent"}, function(response) {
-			modes.percent=!(response.data=="false");
-		});
-		chrome.extension.sendRequest({method: "getLocalStorage", key: "filter_and_global"}, function(response) {
-			modes.filter_and_global=!(response.data=="false");
-		});
-		chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
-			modes.pointsSequenceValues=response.data;
-			if (modes.pointsSequenceValues) {
-				var numberArray = parsePointPickerFrom(modes.pointsSequenceValues);
-				if (numberArray.length > 0) {
-					pointSeq= numberArray;
+		modes.percent = true;
+		modes.filter_and_global = true;
+		modes.refreshRate=2;
+		try {
+			chrome.extension.sendRequest({method: "getLocalStorage", key: "percent"}, function(response) {
+				try {modes.percent=!(response.data=="false");
+				} catch (err) {
+					utils.log(response);
+					utils.log(err);
+					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x1)");
 				}
-			}
-		});
-		chrome.extension.sendRequest({method: "getLocalStorage", key: "refreshRate"}, function(response) {
-			modes.refreshRate=Number(response.data);
-		});
+			});
+			chrome.extension.sendRequest({method: "getLocalStorage", key: "filter_and_global"}, function(response) {
+				try{modes.filter_and_global=!(response.data=="false");
+				} catch (err) {
+					utils.log(err);
+					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x2)");
+				}
+			});
+			chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
+				try{
+					modes.pointsSequenceValues=response.data;
+					if (modes.pointsSequenceValues) {
+						var numberArray = parsePointPickerFrom(modes.pointsSequenceValues);
+						if (numberArray.length > 0) {
+							pointSeq= numberArray;
+						}
+					}
+				} catch (err) {
+					utils.log(err);
+					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x3)");
+				}
+			});
+			chrome.extension.sendRequest({method: "getLocalStorage", key: "refreshRate"}, function(response) {
+				try{ modes.refreshRate=Number(response.data);
+				} catch (err) {
+					utils.log(err);
+					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x4)");
+				}
+			});
+		} catch (err) {
+			utils.log(err);
+			utils.alertBrokenAPI("Unable to reload Trello Points settings (0x5)");
+		}
 		nextRefreshIn = modes.refreshRate;
 		if(!utils.isNumber(nextRefreshIn) || Number(nextRefreshIn)<1) nextRefreshIn=2;
 		setTimeout(periodical,nextRefreshIn*1000);
