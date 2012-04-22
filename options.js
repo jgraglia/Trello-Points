@@ -1,6 +1,14 @@
 // Saves options to localStorage.
+
+function isDebug() {
+	return localStorage["debug"];
+}
 function save_options() {
-	console.log("save_options: ");
+	console.log("in save_options: ");
+	var debug = document.getElementById("debug");
+	localStorage["debug"] = debug.checked;
+	console.log("localStorage['debug']: " + localStorage["debug"]);
+	
 	var percent = document.getElementById("percent");
 	localStorage["percent"] = percent.checked;
 	console.log("localStorage['percent']: " + localStorage["percent"]);
@@ -12,10 +20,11 @@ function save_options() {
 
 	var pointsSequence=$('input[type=radio][name=pointsSequence]:checked').attr('value');
 	localStorage["pointsSequence"] = pointsSequence;
-	if(pointsSequence=="defaults") localStorage["pointsSequence-values"] = "0, 1, 2, 3, 5, 8, 13, 20";
+	if (pointsSequence=="defaults") localStorage["pointsSequence-values"] = "0, 1, 2, 3, 5, 8, 13, 20";
 	else if(pointsSequence=="fibonacci") localStorage["pointsSequence-values"] = "1, 2, 3, 5, 8, 13, 21, 34, 55";
-	else  localStorage["pointsSequence-values"] =$("#customPointSequence").val();
-	
+	else if(pointsSequence=="tshirtsizes") localStorage["pointsSequence-values"] = "XXS, XS, S, M, L, XL, XXL, 3XL, 4XL, ?";
+	else if(pointsSequence=="moscow") localStorage["pointsSequence-values"] = "W, C, S, M, ?";
+	else localStorage["pointsSequence-values"] =$("#customPointSequence").val();
 	
 	var refreshRate = $("#refreshRate").val();
 	if ( Number(refreshRate) >= 1) {
@@ -29,7 +38,7 @@ function save_options() {
 			+ localStorage["pointsSequence-values"]);
 	console.log("localStorage['refreshRate']: "
 			+ localStorage["refreshRate"]);
-	// Update status to let user know options were saved.
+
 	showStatus("Options Saved.");
 }
 
@@ -40,14 +49,22 @@ function showStatus(message) {
 		status.children().remove();
 	}, 750);	
 }
-// Restores select box state to saved value from localStorage.
+
 function restore_options() {
 	console.log("restore_options: ");
 
+	var debug = localStorage["debug"];
+	console.log("debug: " + debug);
+	if (debug == "true"|| debug == true) {	
+		document.getElementById("debug").checked = "checked";
+	} else {
+		document.getElementById("debug").checked = "";
+	}
+	
 	var percent = localStorage["percent"];
 	console.log("percent: " + percent);
 	if (percent == "true"|| percent == true) {
-		document.getElementById("percent").checked = "checkeSd";
+		document.getElementById("percent").checked = "checked";
 	} else {
 		document.getElementById("percent").checked = "";
 	}
@@ -78,6 +95,7 @@ function restore_options() {
 	console.log("restored");
 }
 function restoreDefaults() {
+	localStorage["debug"]=false;
 	localStorage["percent"]=true;
 	localStorage["filter_and_global"]=true;
 	localStorage["pointsSequence"]="defaults";
