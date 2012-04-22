@@ -19,6 +19,7 @@
 
 var iconUrl = chrome.extension.getURL('images/storypoints-icon.png');
 
+//non programmatic debug (vs. debug settings available from options page)
 var debug = {
 	card: false,
 	list:false,
@@ -26,68 +27,35 @@ var debug = {
 };
 var filter = new Filter(debug.filter);
 
+var utils = new Utils();
+
+var tp =  new Object();
+tp.pointPicker = new AlphaNumericPointPicker(); 
+tp.settingsLoader = new SettingsLoader();
+tp.settingsLoader.pointPicker = tp.pointPicker;
+
 var modes=new Object();
 $(function(){
-	chrome.extension.sendRequest({method: "trelloScrumInstalled"}, function(response) {
-		try{
-			if (response.data=="true"|| response.data==true) {
-			console.log("Trello Scrum extension seems to be installed (but is it active?)");
-			}
-		} catch (err) {
-			utils.log(response);
-			utils.log(err);
-			utils.alertBrokenAPI("Unable to check if Trello Scrum extension is installed (0x0)");
-		}
-	});
+	"use strict";
+
+	$(".card-detail-title .edit-controls").live('DOMNodeInserted',tp.pointPicker.showPointPicker);
+	
+	tp.settingsLoader.checkTrelloScrum();
+
+	modes.percent = true;
+	modes.filter_and_global = true;
+	modes.refreshRate=2;
 	(function periodical() {
 		$('.list-card').each(updateCard);
 		$('.list').each(updateList);
 		
-		modes.percent = true;
-		modes.filter_and_global = true;
-		modes.refreshRate=2;
 		try {
-			chrome.extension.sendRequest({method: "getLocalStorage", key: "percent"}, function(response) {
-				try {modes.percent=!(response.data=="false");
-				} catch (err) {
-					utils.log(response);
-					utils.log(err);
-					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x1)");
-				}
-			});
-			chrome.extension.sendRequest({method: "getLocalStorage", key: "filter_and_global"}, function(response) {
-				try{modes.filter_and_global=!(response.data=="false");
-				} catch (err) {
-					utils.log(err);
-					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x2)");
-				}
-			});
-			chrome.extension.sendRequest({method: "getLocalStorage", key: "pointsSequence-values"}, function(response) {
-				try{
-					modes.pointsSequenceValues=response.data;
-					if (modes.pointsSequenceValues) {
-						var numberArray = parsePointPickerFrom(modes.pointsSequenceValues);
-						if (numberArray.length > 0) {
-							pointSeq= numberArray;
-						}
-					}
-				} catch (err) {
-					utils.log(err);
-					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x3)");
-				}
-			});
-			chrome.extension.sendRequest({method: "getLocalStorage", key: "refreshRate"}, function(response) {
-				try{ modes.refreshRate=Number(response.data);
-				} catch (err) {
-					utils.log(err);
-					utils.alertBrokenAPI("Unable to reload Trello Points settings (0x4)");
-				}
-			});
+			tp.settingsLoader.reloadSettings(modes, tp.pointPicker);
 		} catch (err) {
 			utils.log(err);
 			utils.alertBrokenAPI("Unable to reload Trello Points settings (0x5)");
 		}
-		nextRefreshIn = modes.refreshRate;
+		var nextRefreshIn = modes.refreshRate;
 		if(!utils.isNumber(nextRefreshIn) || Number(nextRefreshIn)<1) nextRefreshIn=2;
 		setTimeout(periodical,nextRefreshIn*1000);
 	})();

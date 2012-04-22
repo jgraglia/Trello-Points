@@ -16,7 +16,7 @@
 	"content_scripts": [
 		{
 			"matches": ["https://trello.com/*"],
-			"js": ["jquery-1.7.1.min.js","utils.js", "parser.js", "filter.js","pointpicker.js", "card.js", "list.js", "trellopoints.js"],
+			"js": ["jquery-1.7.1.min.js","utils.js", "parser.js", "filter.js","numericpointpicker.js", "alphanumericpointpicker.js", "card.js", "list.js", "main/settingsloader.js", "trellopoints.js"],
 			"css": ["trellopoints.css"]
 		}
 	]

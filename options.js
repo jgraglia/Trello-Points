@@ -22,8 +22,8 @@ function save_options() {
 	localStorage["pointsSequence"] = pointsSequence;
 	if (pointsSequence=="defaults") localStorage["pointsSequence-values"] = "0, 1, 2, 3, 5, 8, 13, 20";
 	else if(pointsSequence=="fibonacci") localStorage["pointsSequence-values"] = "1, 2, 3, 5, 8, 13, 21, 34, 55";
-	else if(pointsSequence=="tshirtsizes") localStorage["pointsSequence-values"] = "XXS, XS, S, M, L, XL, XXL, 3XL, 4XL, ?";
-	else if(pointsSequence=="moscow") localStorage["pointsSequence-values"] = "W, C, S, M, ?";
+	else if(pointsSequence=="tshirtsizes") localStorage["pointsSequence-values"] = "XXS, XS, S, M, L, XL, XXL, 3XL, 4XL";
+	else if(pointsSequence=="moscow") localStorage["pointsSequence-values"] = "W, C, S, M";
 	else localStorage["pointsSequence-values"] =$("#customPointSequence").val();
 	
 	var refreshRate = $("#refreshRate").val();

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var utils = new Utils();
+
 	module("list.js");
 
 	test("constructor", function() {

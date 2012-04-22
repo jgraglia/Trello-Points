@@ -7,16 +7,16 @@ var trelloScrumExtensionId = "jdbcdblgjdpmfninkoogcfpnkjmndgje";
 var trelloScrumInstalled=false;
 chrome.extension.sendRequest(trelloScrumExtensionId, {getTargetData: true},
   function(response) {
-  console.log("response: "+response);
-  trelloScrumInstalled = true;
+  	console.log("Options :: Checking if Trello Scrum ("+trelloScrumExtensionId+") is installed: "+response);
+  	trelloScrumInstalled = true;
 });
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.method == "getLocalStorage") {
-		//console.log("Received request: " + request.method + " from " + sender);
 		sendResponse({
 			data : localStorage[request.key]
 		});
+		console.log("Options :: Received request: " + request.method + " from " + sender+" = "+localStorage[request.key]);
 	}else if (request.method == "trelloScrumInstalled") {
 		sendResponse({
 			data : trelloScrumInstalled

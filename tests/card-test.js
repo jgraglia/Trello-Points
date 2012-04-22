@@ -27,7 +27,11 @@ $(document).ready(function() {
 	test("Compute points : unknown", function() {
 		equal(new Card(mockCardElt("lorem ipsum (?)")).computePoints(), "?") ;
 	});
-	
+	test("Compute points : text", function() {
+		equal(new Card(mockCardElt("lorem ipsum (XXL)")).computePoints(), "XXL") ;
+		equal(new Card(mockCardElt("lorem ipsum (X(XL)")).computePoints(), "X(XL") ;
+		equal(new Card(mockCardElt("lorem ipsum (M)")).computePoints(), "M") ;
+	});
 	test("Contains badge : yes ", function() {
 		var $elt = mockCardElt("lorem ipsum (?)").append($("<span>").attr("class", "badge-points"));
 		equal(new Card($elt).containsBadge(), true) ;
