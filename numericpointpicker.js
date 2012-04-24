@@ -64,7 +64,7 @@ function NumericPointPicker() {
 		var pointsArray = [];
 		for (var i=0; i < stringArray.length; i++) {
 			var val = $.trim(stringArray[i]);
-			if (utils.isNumber(val)) {
+			if (tp.utils.isNumber(val)) {
 				pointsArray.push(Number(val));
 			}
 		}
