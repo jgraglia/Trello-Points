@@ -6,7 +6,7 @@ function Utils() {
 
 	/* 
 	Inform user that the content and format of the page has changed and that the
-	extension is no more compatible with it.
+	extension seems to be no more compatible with it.
 	*/
 	this.alertBrokenAPI = function(message) {
 		if (brokenArrow) {

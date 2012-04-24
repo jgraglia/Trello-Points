@@ -3,7 +3,7 @@ function Card($cardElement, debug) {
 	if ($card == undefined || !$card.jquery) throw new Error("JQuery element required");
 	var that = this;
 	var log = function(message) {
-		utils.log("Card", message);
+		tp.utils.log("Card", message);
 	};
 	
 	function extractPoints(text) {

@@ -5,7 +5,7 @@ function List($elt, filter, debug) {
 
 	var that = this;
 	var log = function(message) {
-		utils.log("List", message);
+		tp.utils.log("List", message);
 	};
 	this.computeScores= function() {
 		var filteredScore = null;
@@ -15,7 +15,7 @@ function List($elt, filter, debug) {
 			var card = new Card($(this));
 			var cardPoints = card.computePoints();
 			if (debug)log("Found a card with "+cardPoints+" points");
-			if(utils.isNumber(cardPoints)) {
+			if(tp.utils.isNumber(cardPoints)) {
 				if(globalScore==null) globalScore = 0;
 				globalScore += Number(cardPoints);
 				if (card.isVisible(filter)) {

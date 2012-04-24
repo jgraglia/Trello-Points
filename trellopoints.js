@@ -27,18 +27,16 @@ var debug = {
 };
 var filter = new Filter(debug.filter);
 
-var utils = new Utils();
-
 var tp =  new Object();
+tp.utils = new Utils();
 tp.pointPicker = new AlphaNumericPointPicker(); 
 tp.settingsLoader = new SettingsLoader();
-tp.settingsLoader.pointPicker = tp.pointPicker;
 
 var modes=new Object();
 $(function(){
 	"use strict";
 
-	$(".card-detail-title .edit-controls").live('DOMNodeInserted',tp.pointPicker.showPointPicker);
+	$(".card-detail-title .edit-controls").live('DOMNodeInserted',showCurrentPointPicker);
 	
 	tp.settingsLoader.checkTrelloScrum();
 
@@ -50,20 +48,35 @@ $(function(){
 		$('.list').each(updateList);
 		
 		try {
-			tp.settingsLoader.reloadSettings(modes, tp.pointPicker);
+			tp.settingsLoader.reloadSettings(modes, function() {
+				tp.pointPicker.uninstall();
+				if (modes.pointsSequence === "defaults" || modes.pointsSequence === "fibonacci") {
+					tp.pointPicker = new NumericPointPicker(); 
+					console.log("num");
+				}else {
+					tp.pointPicker = new AlphaNumericPointPicker();
+					console.log("alpha"); 
+				}
+				tp.pointPicker.setSequence(tp.pointPicker.parsePointPickerFrom(modes.pointsSequenceValues));
+				console.log("Point picker component updated: "+tp.pointPicker);
+			});
 		} catch (err) {
-			utils.log(err);
-			utils.alertBrokenAPI("Unable to reload Trello Points settings (0x5)");
+			tp.utils.log(err);
+			tp.utils.alertBrokenAPI("Unable to reload Trello Points settings (0x5)");
 		}
 		var nextRefreshIn = modes.refreshRate;
-		if(!utils.isNumber(nextRefreshIn) || Number(nextRefreshIn)<1) nextRefreshIn=2;
+		if(!tp.utils.isNumber(nextRefreshIn) || Number(nextRefreshIn)<1) nextRefreshIn=2;
 		setTimeout(periodical,nextRefreshIn*1000);
 	})();
 });
 
 var log = function(message) {
-	utils.log("Main", message);
+	tp.utils.log("Main", message);
 };
+
+function showCurrentPointPicker() {
+	tp.pointPicker.showPointPicker(this);
+}
 function updateCard(event) {
 	var card = new Card($(this), debug.card);
 	if (debug.card) {

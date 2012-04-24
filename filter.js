@@ -6,7 +6,7 @@ function Filter(debug) {
 	};
 
 	var log = function(message) {
-		utils.log("Filter", message);
+		tp.utils.log("Filter", message);
 	};
 	
 	var retrieveCurrentFilterStatus= function() {
