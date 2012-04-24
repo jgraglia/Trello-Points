@@ -13,9 +13,19 @@ chrome.extension.sendRequest(trelloScrumExtensionId, {getTargetData: true},
 
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	if (request.method == "getLocalStorage") {
-		sendResponse({
-			data : localStorage[request.key]
-		});
+		if (request.key==="pointpicker") {
+			var pointPickerSettings = {
+				type: localStorage["pointsSequence"],
+				values: localStorage["pointsSequence-values"]
+			};
+			sendResponse({
+				data : pointPickerSettings
+			});
+		}else {
+			sendResponse({
+				data : localStorage[request.key]
+			});
+		}
 		console.log("Options :: Received request: " + request.method + " from " + sender+" = "+localStorage[request.key]);
 	}else if (request.method == "trelloScrumInstalled") {
 		sendResponse({
