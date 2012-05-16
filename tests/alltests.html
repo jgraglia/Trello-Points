@@ -2,18 +2,26 @@
                     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="libs/jquery-latest.js"></script>
+<link rel="stylesheet" href="libs/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="libs//qunit.js"></script>
+<!--
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css"
 	type="text/css" media="screen" />
 <script type="text/javascript"
 	src="http://code.jquery.com/qunit/git/qunit.js"></script>
-	
+-->	
 	<script type="text/javascript">
 		// mock chrome extension context...
 		chrome = new Object();
 		chrome.extension = new Object();
 		chrome.extension.getURL = function () {return null;}
 		chrome.extension.sendRequest = function () {return null;}
+		ignoretest = ztest = notest= function( testName, expected, callback, async ) {
+			console.log("IGNORED!"+QUnit.config.currentModule+"::"+testName);
+			$("body").append($("<li>").attr("class","fail").append("Ignored: "+QUnit.config.currentModule+" : "+testName));
+		};
 	</script>
 	
 	<script type="text/javascript"	src="../utils.js"></script>
@@ -36,7 +44,7 @@
 	
 </head>
 <body>
-	<h1 id="qunit-header">QUnit example</h1>
+	<h1 id="qunit-header">Trello Points Javascript tests, powered by QUnit</h1>
 	<h2 id="qunit-banner"></h2>
 	<div id="qunit-testrunner-toolbar"></div>
 	<h2 id="qunit-userAgent"></h2>
