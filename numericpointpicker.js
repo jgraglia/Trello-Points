@@ -2,7 +2,7 @@
 function NumericPointPicker() {
 	"use strict";
 	var pointSeq = [0, 1, 2, 3, 5, 8, 13, 20];
-	var parser = numericParser;
+	var parser = positiveNumericParser;
 	var that=this;
 	var debug=false;
 	
