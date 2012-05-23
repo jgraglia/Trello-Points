@@ -17,7 +17,7 @@
 **      Morgan Craft <https://github.com/mgan59>
 */
 
-var iconUrl = chrome.extension.getURL('images/storypoints-icon.png');
+var iconUrl = chrome.extension.getURL('images/points-icon.png');
 
 //non programmatic debug (vs. debug settings available from options page)
 var debug = {
