@@ -31,6 +31,13 @@
 	padding: 0 4px 0 17px !important;
 }
 
+.negative-points {
+	background-color: #FF0580 !important;
+	border-color: #FF0b72 !important;
+	border-bottom-color: #FF0b5f !important;
+}
+.positive-points {
+}
 .picker {
 	float: right;
 	padding-top: 5px;

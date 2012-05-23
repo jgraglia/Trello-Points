@@ -20,7 +20,7 @@ function Card($cardElement, debug) {
 			//utils.alertBrokenAPI("Card has no title. Check Trello structure");
 			return null;
 		}
-		var title=$title.html();
+		var title=$title[0].text;
 		if (debug)log("Title is: "+title);
 		var points=extractPoints($title[0].otitle||title);
 		if (debug)log("extractPoints returns: "+points);
@@ -28,6 +28,8 @@ function Card($cardElement, debug) {
 // if(points != null){
 // $title[0].otitle=title;
 // }
+//      $title[0].textContent = title.replace("("+points+")",'');
+
 		// $title.html($title.html().replace(reg,''));
 		if (debug) log(points+":::"+title);
 		return points;
@@ -70,7 +72,14 @@ function Card($cardElement, debug) {
 		var $badge = ensureBadgeExists();
 		if (debug) log("updating badge  text");
 		$badge.text(cardPoints);
-		$badge.attr({title: 'This card has '+cardPoints+' storypoint(s).'});
+		if (cardPoints >0 ) {
+			$badge.addClass("positive-points");
+			$badge.removeClass("negative-points");
+		} else if (cardPoints <0 ) {
+			$badge.removeClass("positive-points");
+			$badge.addClass("negative-points");
+		}
+		$badge.attr({title: 'This card has '+cardPoints+' point' + (cardPoints == 1 ? '.' : 's.')});
 	};
 	
 	this.isMatched = function() {

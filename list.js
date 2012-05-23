@@ -45,7 +45,7 @@ function List($elt, filter, debug) {
 		if (scores.filtered != scores.global) {
 			var text;
 			if (modes && modes.filter_and_global==true) {
-				text=(scores.filtered>0?scores.filtered:'')+"/"+(scores.global>0?scores.global:'');
+				text=(scores.filtered!=0?scores.filtered:'')+"/"+(scores.global!=0?scores.global:'');
 			} else {
 				text=scores.filtered;
 			}
@@ -55,7 +55,7 @@ function List($elt, filter, debug) {
 			}
 			$total.text(text);
 		} else {
-			$total.text(scores.filtered>0?scores.filtered:'');
+			$total.text(scores.filtered!=0?scores.filtered:'');
 		}
 	};
 	this.removeScoresFromTitle = function() {
