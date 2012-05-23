@@ -9,10 +9,11 @@
   	},
   	"options_page": "options.html",
   	"permissions": [ "background" ],
-        "background_page": "background.html",
+        
         "background": {
  		"scripts": ["background.js"]
 	 },
+	"web_accessible_resources" : ["images/points-icon.png"],
 	"content_scripts": [
 		{
 			"matches": ["https://trello.com/*"],
