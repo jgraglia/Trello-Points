@@ -1,6 +1,7 @@
 function Card($cardElement, debug) {
 	var $card = $cardElement;
 	if ($card == undefined || !$card.jquery) throw new Error("JQuery element required");
+	var $title = $card.find('a.list-card-title');
 	var that = this;
 	var log = function(message) {
 		tp.utils.log("Card", message);
@@ -13,7 +14,6 @@ function Card($cardElement, debug) {
 	};
 	
 	this.computePoints= function() {
-		var $title=$card.find('a.list-card-title');
 		if(!$title[0]) {
 			// When you drag a card, she seems to lost her title..No need 
 			// to broke extension, return null points is ok.
@@ -23,15 +23,7 @@ function Card($cardElement, debug) {
 		var title=$title[0].text;
 		if (debug)log("Title is: "+title);
 		var points=extractPoints($title[0].otitle||title);
-		if (debug)log("extractPoints returns: "+points);
-		// from TrelloScrum.. seems to trig a bug or sth weird.. skip it!
-// if(points != null){
-// $title[0].otitle=title;
-// }
-//      $title[0].textContent = title.replace("("+points+")",'');
-
-		// $title.html($title.html().replace(reg,''));
-		if (debug) log(points+":::"+title);
+		if (debug) log("extractPoints returns: "+points+" from "+title);
 		return points;
 	};
 	
@@ -82,8 +74,13 @@ function Card($cardElement, debug) {
 		}
 		$badge.attr({title: 'This card has '+cardPoints+' point' + (cardPoints == 1 ? '.' : 's.')});
 	};
+	//Does not work!
 	this.removePointsFromTitle = function (cardPoints) {
-		if (debug) log("Removing following text: '("+cardPoints+")' from card title");
+		var title=$title[0].text;
+//		if (debug) 
+log("Removing following text: '("+cardPoints+")' from card title: "+ title);
+		 $title[0].textContent = title.replace("("+cardPoints+")",'');
+log("now: "+$title[0].text);
 	};
 	
 	this.isMatched = function() {

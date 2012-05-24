@@ -91,6 +91,7 @@ function updateCard(event) {
 	if (cardPoints) {
 		if (debug.card) log("card has points.. updating badge");
 		card.updateBadge(cardPoints);
+		//card.removePointsFromTitle(cardPoints);
 	} else {
 		if (debug.card) {
 			log("card has no points.. removing badge");
