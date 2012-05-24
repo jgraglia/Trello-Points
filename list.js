@@ -15,17 +15,17 @@ function List($elt, filter, debug) {
 			var card = new Card($(this));
 			var cardPoints = card.computePoints();
 			if (debug)log("Found a card with "+cardPoints+" points");
-			if(tp.utils.isNumber(cardPoints)) {
-				if(globalScore==null) globalScore = 0;
+			if (tp.utils.isNumber(cardPoints)) {
+				if (globalScore==null) globalScore = 0;
 				globalScore += Number(cardPoints);
 				if (card.isVisible(filter)) {
-					if(debug) log("Card is visible! incrementing filtered score of "+cardPoints);
-					if(filteredScore==null) filteredScore = 0;
+					if (debug) log("Card is visible! incrementing filtered score of "+cardPoints);
+					if (filteredScore==null) filteredScore = 0;
 					filteredScore += Number(cardPoints);
 				}
 			};
 		});
-		if(debug) log("scores: "+filteredScore+"/"+globalScore);
+		if (debug) log("scores: "+filteredScore+"/"+globalScore);
 		return roundScores({global: globalScore, filtered: filteredScore});
 	};
 	var roundScores = function(scores) {
@@ -33,39 +33,61 @@ function List($elt, filter, debug) {
 		var globalScoreTruncated = Math.floor(scores.global * 100) / 100;
 		return {global: globalScoreTruncated, filtered: filteredScoreTruncated};
 	};
-	this.insertScoresInTitle = function(scores, modes) {
-		var $total;
-		if($list.find('.list-total')[0]) {
-			if (debug) log("list scores found");
-			$total=$list.find('.list-total');
-		}else {
-			if (debug) log("inserting list scores element");
-			$total = $('<span class="list-total">').appendTo($list.find('.list-header h2'));
-		}
-		if (scores.filtered != scores.global) {
-			var text;
-			if (modes && modes.filter_and_global==true) {
-				text=(scores.filtered!=0?scores.filtered:'')+"/"+(scores.global!=0?scores.global:'');
-			} else {
-				text=scores.filtered;
-			}
-			if (modes && modes.percent==true) {
-				var percent = Math.floor(scores.filtered*100/scores.global*100)/100;
-				text+=" ["+percent+"%]";
-			}
-			$total.text(text);
+	var computePercentage = function(scores) {
+		return Math.floor(scores.filtered*100/scores.global*100)/100;
+	};
+	var computeNotFilteredText = function(globalScore) {
+		if (debug) console.log("Computing not filtered score with global score: "+globalScore);	
+		return globalScore!=0?""+globalScore:'';
+	};
+	var sameSign = function(a,b) {
+		if (a>=0) return b >=0;
+		else return b <=0;
+	}
+	var computeFilteredText = function(scores, modes) {
+		if (debug) console.log("computing filtered text with "+modes.filter_and_global+" and "+modes.percent);
+		var text;
+		if (modes && modes.filter_and_global==true) {
+			text=(scores.filtered!=0?scores.filtered:'')+"/"+(scores.global!=0?scores.global:'');
 		} else {
-			$total.text(scores.filtered!=0?scores.filtered:'');
+			text=scores.filtered;
+		}
+		if (modes && modes.percent==true && sameSign(scores.filtered, scores.global)) {
+			text+=" ["+computePercentage(scores)+"%]";
+		}
+		return text;
+	};
+	this.computeTotalText = function(scores, modes) {
+		if (scores.filtered == scores.global) {
+			return computeNotFilteredText(scores.global);
+		} else {
+			return computeFilteredText(scores, modes);
 		}
 	};
+	this.insertScoresInTitle = function(scores, modes) {
+		var $total;
+		if ($list.find('.list-total')[0]) {
+			if (debug) log("list scores found");
+			$total=$list.find('.list-total');
+		} else {
+			var parent = $list.find('.list-header h2');
+			if (debug) log("inserting list scores element on: "+parent);
+			$total = $('<span class="list-total">').appendTo(parent);
+		}
+		var text = this.computeTotalText(scores, modes);
+		if (debug) console.log("Computed total text is: '"+text+"' with "+scores);
+		$total.text(text);
+		return $total;
+	};
+
 	this.removeScoresFromTitle = function() {
 		if (debug) {
-			log("Has to remove list scores.");
+			log("Has to remove scores from list.");
 		}
 		if ($list.find('.list-total')[0]) {
 			$list.find('.list-total').remove();
 		}else {
-			if (debug) log("Can't remove list scores");
+			if (debug) log("Can't remove scores from list element : element not found in DOM");
 		}
 	};
 }

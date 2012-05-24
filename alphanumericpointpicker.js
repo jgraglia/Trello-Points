@@ -12,7 +12,7 @@ function AlphaNumericPointPicker() {
 	
 	this.showPointPicker = function(cardElement) {
 		// check if already installed
-		if($(cardElement).find('.picker').length) {
+		if ($(cardElement).find('.picker').length) {
 			if(debug)log("already installed!");	
 			return;
 		}
@@ -21,7 +21,7 @@ function AlphaNumericPointPicker() {
 		for (var i=0; i < pointSeq.length; i++) {
 			pickers += '<span class="point-value">' + pointSeq[i] + '</span> ';
 		}
-		if(debug)log(pointSeq.length+" points installed in picker : "+pointsSeqs);
+		if (debug)log(pointSeq.length+" points installed in picker : "+pointsSeqs);
 		var picker = "<div class='picker'>" + pickers + "</div>";
 		$(".card-detail-title .edit-controls").append(picker);
 		pickerElement = picker;

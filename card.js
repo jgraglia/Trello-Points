@@ -68,6 +68,7 @@ function Card($cardElement, debug) {
 			}
 		}
 	};
+
 	this.updateBadge=function (cardPoints) {
 		var $badge = ensureBadgeExists();
 		if (debug) log("updating badge  text");
@@ -80,6 +81,9 @@ function Card($cardElement, debug) {
 			$badge.addClass("negative-points");
 		}
 		$badge.attr({title: 'This card has '+cardPoints+' point' + (cardPoints == 1 ? '.' : 's.')});
+	};
+	this.removePointsFromTitle = function (cardPoints) {
+		if (debug) log("Removing following text: '("+cardPoints+")' from card title");
 	};
 	
 	this.isMatched = function() {
