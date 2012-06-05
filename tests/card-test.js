@@ -93,7 +93,7 @@ $(document).ready(function() {
 		equal(card.isMatched(), true) ;
 		equal(card.isVisible(mockActiveFilter), true);
 	});
-	test("When a filter is active,card is not visible if not matched", function() {
+	test("When a filter is active, card is not visible if not matched", function() {
 		var $elt = mockCardElt("lorem ipsum (?)");
 		
 		var $cardContainer = $("<span>").append($elt);
@@ -101,5 +101,29 @@ $(document).ready(function() {
 
 		equal(card.isMatched(), false) ;
 		equal(card.isVisible(mockActiveFilter), false);
+	});
+
+	test("Hide numeric card points from title", function() {
+		var $elt = mockCardElt("lorem ipsum (87)");
+		
+		var $cardContainer = $("<span>").append($elt);
+		var card = new Card($elt);
+
+		equal(card.computePoints(), 87) ;
+		
+		card.removePointsFromTitle(87);
+		equal(card.retrieveTitleText(), "lorem ipsum ");
+	});
+
+	test("Hide alphanumeric card points from title", function() {
+		var $elt = mockCardElt("lorem ipsum (XXS)");
+		
+		var $cardContainer = $("<span>").append($elt);
+		var card = new Card($elt);
+
+		equal(card.computePoints(), "XXS") ;
+		
+		card.removePointsFromTitle("XXS");
+		equal(card.retrieveTitleText(), "lorem ipsum ");
 	});
 });

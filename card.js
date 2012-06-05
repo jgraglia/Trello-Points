@@ -74,13 +74,18 @@ function Card($cardElement, debug) {
 		}
 		$badge.attr({title: 'This card has '+cardPoints+' point' + (cardPoints == 1 ? '.' : 's.')});
 	};
-	//Does not work!
+	
 	this.removePointsFromTitle = function (cardPoints) {
 		var title=$title[0].text;
-//		if (debug) 
-log("Removing following text: '("+cardPoints+")' from card title: "+ title);
-		 $title[0].textContent = title.replace("("+cardPoints+")",'');
-log("now: "+$title[0].text);
+		if (debug) log("Removing following text: '"+pointsAsTitlePattern(cardPoints)+"' from card title: "+ title);
+		$title[0].textContent = title.replace(pointsAsTitlePattern(cardPoints),'');
+		if (debug) log("After removal of points, title is: "+this.retrieveTitleText());
+	};
+	var pointsAsTitlePattern=function(cardPoints) {
+		return "("+cardPoints+")";
+	};
+	this.retrieveTitleText = function() {
+		return $title[0].text;
 	};
 	
 	this.isMatched = function() {
