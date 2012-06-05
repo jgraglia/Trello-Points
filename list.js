@@ -40,10 +40,6 @@ function List($elt, filter, debug) {
 		if (debug) console.log("Computing not filtered score with global score: "+globalScore);	
 		return globalScore!=0?""+globalScore:'';
 	};
-	var sameSign = function(a,b) {
-		if (a>=0) return b >=0;
-		else return b <=0;
-	}
 	var computeFilteredText = function(scores, modes) {
 		if (debug) console.log("computing filtered text with "+modes.filter_and_global+" and "+modes.percent);
 		var text;
@@ -52,7 +48,7 @@ function List($elt, filter, debug) {
 		} else {
 			text=scores.filtered;
 		}
-		if (modes && modes.percent==true && sameSign(scores.filtered, scores.global)) {
+		if (modes && modes.percent==true && tp.utils.sameSign(scores.filtered, scores.global)) {
 			text+=" ["+computePercentage(scores)+"%]";
 		}
 		return text;

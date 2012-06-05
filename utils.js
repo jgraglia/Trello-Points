@@ -33,4 +33,8 @@ function Utils() {
 	this.isNumber=function(text) {
 		return !isNaN(Number(text));
 	};
+	this.sameSign = function(a,b) {
+		if (a>=0) return b >=0;
+		else return b <=0;
+	};
 }
