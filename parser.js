@@ -1,7 +1,7 @@
 /* parse regexp- accepts digits, decimals and '?' */
-var positiveNumericRegexp=/\((\x3f|\d*\.?\d+)\)\s?/m;
-var signedNumericRegexp=/\((.*)\)\s?/m;
-var numericAndAlphaRegexp=/\((.*)\)\s?/m;
+var positiveNumericRegexp=/\((\x3f|\d*\.?\d+)\)$\s?/m;
+var signedNumericRegexp=/\((.*)\)$\s?/m;
+var numericAndAlphaRegexp=/\((.*)\)$\s?/m;
 
 var positiveNumericParser = new Object();
 positiveNumericParser.reg = positiveNumericRegexp;

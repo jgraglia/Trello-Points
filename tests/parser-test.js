@@ -37,7 +37,14 @@ $(document).ready(function() {
 			var parsed=positiveNumericParser.parsePoints("Hello World 4)");
 			assertNoPoint(parsed);
 		});
-
+		test("Card with valid pattern but at invalid location, without point", function() {
+			var parsed=positiveNumericParser.parsePoints("Hello World (4) and keep going");
+			assertNoPoint(parsed);
+		});
+		test("Card with valid pattern but at invalid location, with points", function() {
+			var parsed=positiveNumericParser.parsePoints("Hello World (4) and keep going (87.9)");
+			assertPoint(parsed, "(87.9)", 87.9);
+		});
 	}
 	module("parser.js : positiveNumericParser");
 	
@@ -54,7 +61,7 @@ $(document).ready(function() {
 	});
 		
 	module("parser.js : signedNumericParser");
-	//defaultTests(signedNumericParser);
+	defaultTests(signedNumericParser);
 	test("Card with negative points are allowed", function() {
 		var parsed=signedNumericParser.parsePoints("Hello World (-65)");
 		assertPoint(parsed, "(-65)", -65);
