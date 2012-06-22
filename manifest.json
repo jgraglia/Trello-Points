@@ -1,11 +1,11 @@
 {
 	"manifest_version": 2,
-	"name": "Trello Points",
-	"version": "0.36",
+	"name": "Points for Trello",
+	"version": "0.37",
 	"description": "Enhance Trello's cards with freely configurable points",
 	"browser_action": {
-		"default_title": "Trello Points",
-    	       "default_icon": "images/icon.png"
+		"default_title": "Points for Trello",
+    		"default_icon": "images/icon.png"
   	},
   	"options_page": "options.html",
   	"permissions": [ "background" ],
