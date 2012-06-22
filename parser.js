@@ -8,6 +8,7 @@ positiveNumericParser.reg = positiveNumericRegexp;
 positiveNumericParser.parsePoints = function(text) {
 	return text.match(this.reg);
 };
+positiveNumericParser.toString = function() {return "positiveNumericParser";}
 
 var signedNumericParser = new Object();
 signedNumericParser.utils = new Utils();
@@ -24,6 +25,7 @@ signedNumericParser.parsePoints = function(text) {
 	}
 	return values;
 };
+signedNumericParser.toString = function() {return "signedNumericParser";}
 
 var numericAndAlphaParser = new Object();
 numericAndAlphaParser.reg = numericAndAlphaRegexp;
@@ -40,6 +42,7 @@ numericAndAlphaParser.parsePoints = function(text) {
 	}
 	return values;
 };
+numericAndAlphaParser.toString = function() {return "numericAndAlphaParser";}
 
 
 var parser = numericAndAlphaParser;

@@ -23,7 +23,7 @@ function Card($cardElement, debug) {
 		var title=$title[0].text;
 		if (debug)log("Title is: "+title);
 		var points=extractPoints($title[0].otitle||title);
-		if (debug) log("extractPoints returns: "+points+" from "+title);
+		if (debug) log("extractPoints returns: "+points+" from "+title+" with "+parser);
 		return points;
 	};
 	

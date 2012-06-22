@@ -32,6 +32,12 @@ $(document).ready(function() {
 		equal(new Card(mockCardElt("lorem ipsum (X(XL)")).computePoints(), "X(XL") ;
 		equal(new Card(mockCardElt("lorem ipsum (M)")).computePoints(), "M") ;
 	});
+
+	test("Compute points : multiple tokens", function() {
+		equal(new Card(mockCardElt("lorem (9) ipsum (0)")).computePoints(), 0) ;
+		equal(new Card(mockCardElt("lorem (28) ipsum(2)")).computePoints(), 2) ;
+	});
+
 	test("Contains badge : yes ", function() {
 		var $elt = mockCardElt("lorem ipsum (?)").append($("<span>").attr("class", "badge-points"));
 		equal(new Card($elt).containsBadge(), true) ;

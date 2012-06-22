@@ -30,19 +30,19 @@ $(document).ready(function() {
 			assertPoint(parsed, "(?)", "?");
 		});
 		test("Card with incomplete pattern 1", function() {
-			var parsed=positiveNumericParser.parsePoints("Hello World (4");
+			var parsed=parser.parsePoints("Hello World (4");
 			assertNoPoint(parsed);
 		});
 		test("Card with incomplete pattern 2", function() {
-			var parsed=positiveNumericParser.parsePoints("Hello World 4)");
+			var parsed=parser.parsePoints("Hello World 4)");
 			assertNoPoint(parsed);
 		});
 		test("Card with valid pattern but at invalid location, without point", function() {
-			var parsed=positiveNumericParser.parsePoints("Hello World (4) and keep going");
+			var parsed=parser.parsePoints("Hello World (4) and keep going");
 			assertNoPoint(parsed);
 		});
 		test("Card with valid pattern but at invalid location, with points", function() {
-			var parsed=positiveNumericParser.parsePoints("Hello World (4) and keep going (87.9)");
+			var parsed=parser.parsePoints("Hello World (4) and keep going (87.9)");
 			assertPoint(parsed, "(87.9)", 87.9);
 		});
 	}
