@@ -45,6 +45,10 @@ $(document).ready(function() {
 			var parsed=parser.parsePoints("Hello World (4) and keep going (87.9)");
 			assertPoint(parsed, "(87.9)", 87.9);
 		});
+		test("Card with text matching pattern but just a description", function() {
+			var parsed=parser.parsePoints("Hello World (4) and keep going (just some text)");
+			assertNoPoint(parsed);
+		});
 	}
 	module("parser.js : positiveNumericParser");
 	
