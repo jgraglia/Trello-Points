@@ -1,9 +1,9 @@
 /* parse regexp- accepts digits, decimals and '?' */
 var positiveNumericRegexp=/\((\x3f|\d*\.?\d+)\)$\s?/m;
 /* need to allow negative sign : - */
-var signedNumericRegexp=/\((.*)\)$\s?/m;
+var signedNumericRegexp=/\(([^\(]{1,4})\)$\s?/m;
 /* accept anything */
-var numericAndAlphaRegexp=/\((.*)\)$\s?/m;
+var numericAndAlphaRegexp=/\(([^\(]{1,6})\)$\s?/m;
 
 var positiveNumericParser = new Object();
 positiveNumericParser.reg = positiveNumericRegexp;

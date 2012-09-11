@@ -72,7 +72,39 @@ function Card($cardElement, debug) {
 			$badge.removeClass("positive-points");
 			$badge.addClass("negative-points");
 		}
-		$badge.attr({title: 'This card has '+cardPoints+' point' + (cardPoints == 1 ? '.' : 's.')});
+		var rewardPoints = '';
+		switch( cardPoints.toUpperCase() )
+		{
+			case 'XXS':
+				rewardPoints = 1;
+				break;
+			case 'XS':
+				rewardPoints = 2;
+				break;
+			case 'S':
+				rewardPoints = 3;
+				break;
+			case 'M':
+				rewardPoints = 5;
+				break;
+			case 'L':
+				rewardPoints = 8;
+				break;
+			case 'XL':
+				rewardPoints = 13;
+				break;
+			case 'XXL':
+				rewardPoints = 21;
+				break;
+			case '3XL':
+				rewardPoints = 34;
+				break;
+			case '4XL':
+				rewardPoints = 55;
+				break;
+			
+		}
+		$badge.attr({title: 'This card has '+cardPoints+ (rewardPoints == '' ? '' : ' (' + rewardPoints + ')')+' point' + (cardPoints == 1 ? '.' : 's.')});
 	};
 	
 	this.removePointsFromTitle = function (cardPoints) {
