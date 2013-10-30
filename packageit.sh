@@ -17,3 +17,5 @@ zip -r $ZIP * -x tests/* -x screenshots/* -x tests/libs/*
 echo "Done."
 unzip -l $ZIP
 ls -alh $ZIP
+
+echo "To release it : https://chrome.google.com/webstore/developer/dashboard"
