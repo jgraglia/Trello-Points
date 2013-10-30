@@ -10,7 +10,7 @@ function Filter(debug) {
 	};
 	
 	var retrieveCurrentFilterStatus= function() {
-		return $('.js-filter-cards').hasClass('is-on');
+		return !($('.js-filter-cards-indicator').hasClass('hide'));
 	};
 	
 	var initialize= function() {
