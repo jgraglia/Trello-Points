@@ -67,3 +67,6 @@ https://github.com/Q42/TrelloScrum
 
 Julien Graglia (@jgraglia)
 https://github.com/jgraglia/Trello-Points
+
+nafg
+https://github.com/nafg
