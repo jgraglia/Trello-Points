@@ -18,6 +18,8 @@
 **      Nic Pottier <https://github.com/nicpottier>
 **      Bastiaan Terhorst <https://github.com/bastiaanterhorst>
 **      Morgan Craft <https://github.com/mgan59>
+**
+**      nafg <https://github.com/nafg>
 */
 
 var iconUrl = chrome.extension.getURL('images/points-icon.png');
